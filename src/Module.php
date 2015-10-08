@@ -13,12 +13,21 @@ namespace CmsCalendar;
 use Zend\Loader\ClassMapAutoloader,
     Zend\Loader\StandardAutoloader,
     Zend\ModuleManager\Feature\AutoloaderProviderInterface,
-    Zend\ModuleManager\Feature\ConfigProviderInterface;
+    Zend\ModuleManager\Feature\ConfigProviderInterface,
+    Zend\ModuleManager\ModuleManager;
 
 class Module implements
     AutoloaderProviderInterface,
     ConfigProviderInterface
 {
+    /**
+     * @param ModuleManager $moduleManager
+     */
+    public function init(ModuleManager $moduleManager)
+    {
+        $moduleManager->loadModule('CmsCommon');
+    }
+
     /**
      * {@inheritDoc}
      */
